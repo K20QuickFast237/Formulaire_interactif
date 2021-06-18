@@ -1,8 +1,56 @@
 
-	body{
-		background-color: #E8E8E8;
+	h1{
+		text-align: center;
+		margin-top: 50px;
+		font-family: Lato;
 	}
-
-	div{
-		border: 1px solid;
+	form{
+		margin-top: 50px;
+	}
+	input, select{
+		background-color: inherit;
+		border: none;
+		margin-left: 5px;
+	}
+	input[type="text"], input[type="email"]{
+		width: 75%;			
+	}
+	input[type="file"]{
+		display: inline-block;
+	}
+	option{
+		background-color: inherit;
+	}
+	img{
+		height: 50px;
+		/*position: relative; left: -80%;*/
+		margin-left: -125%;
+	}
+	.container-fluid{
+		background-image: url(../images/Curitiba_Botanic_Garden.jpg);
+		background-size: cover;
+	}
+	.formzone{
+		background-color: /*#E8E8E8*/rgba(232, 232, 232, 0.8);
+		padding-bottom: 20px;
+		margin-bottom: 50px; 
+		margin-top: 25px;
+	}
+	.avertir{
+		color: red;
+		opacity: 0;
+		/*display: none;*/
+		margin-left: 20px;
+		margin-top: -10px;
+		font-size: 10px;
+	}
+	.conformer{
+		opacity: 0;
+		margin: 0px 0px;
+	}
+	.element{
+		margin: 0px 0px;
+	}
+	#Contientimage{
+		display: none;
 	}
