@@ -82,7 +82,7 @@
 		
 	phone.addEventListener('blur', testphone);
 	function testphone(){
-		if ((phone.value%1 != 0) || (phone.value%1 == -0)){  // on se rassure que le champ ne contient que des chiffres.
+		if (phone.value%1 != 0) {  // on se rassure que le champ ne contient que des chiffres.
 			alertphone.innerHTML = "Ce champ doit contenir au moins 8 chiffres sans espace ni caracteres tels que '@', '%'' ou '-'";
 			alertphone.style.opacity = '1';
 			return false;
@@ -92,8 +92,8 @@
 		
 	}
 
-	// traitement de l'adresse mail *****************************************************************
-	var mail = document.getElementById('email');
+// traitement de l'adresse mail *****************************************************************
+	var mail = document.getElementById('mail');
 		alertmail = document.getElementById('alertmail');
 
 	mail.addEventListener('focus', function(){	// on se rassure que les erreurs ne s'affichent pas lorsqu'on est dans le champ.
@@ -133,4 +133,25 @@
 			alertmail.style.opacity = '1';
 			return false;
 		}
+	}
+
+	//traitement du submit ***************************************************************
+	var envoie = document.getElementById('submit'),
+		formulaire = document.getElementById('formulaire'),
+		alert = document.getElementById('alertgeneral');
+		envoie.addEventListener('click', testchamp);
+	function testchamp(){
+		if(!testnom()){
+			alertnom.style.opacity = '1';
+			alert.style.opacity = '1';
+		}else if(!testprenom()){
+			alertprenom.style.opacity = '1';
+			alert.style.opacity = '1';
+		}else if(!testmail()){
+			alertmail.style.opacity = '1';
+			alert.style.opacity = '1';
+		}
+		// else{
+		// 	formulaire.submit();
+		// }
 	}

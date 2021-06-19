@@ -1,0 +1,26 @@
+
+	body{
+		background-image: url('../images/sandland.jpg');
+		background-size: cover;
+	}
+	.profilimg{
+		height: 25px;
+		width: 25px;
+
+	}
+	/****************Sur extra grand Ecran***************/
+		@media only screen and (min-width: 1200px) {
+		}
+	/*******************Sur Grand Ecran******************/
+		@media only screen and (min-width: 992px){
+			table{
+				margin-left: 150px;
+			}
+		}
+	/*********************Sur Tablette ******************/
+		@media only screen and (min-width: 768px) {
+		}
+	/*********************Sur Telephone******************/
+		@media only screen and (max-width: 767px) {
+
+		}
