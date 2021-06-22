@@ -1,19 +1,32 @@
+	*{
+		/*border: 1px solid;*/
+	}
 
+	body{
+		font-size: 18px;
+	}
 	h1{
 		text-align: center;
+		padding-bottom: 10px;
 		margin-top: 50px;
 		font-family: Lato;
+		font-size: 30px;
 	}
 	form{
-		margin-top: 50px;
+		margin-top: 15px;
 	}
 	input, select{
 		background-color: inherit;
 		border: none;
 		margin-left: 5px;
+		box-shadow: 2px 2px 15px rgba(91, 176, 222, 1)  !important;		
 	}
-	input[type="text"], input[type="email"]{
-		width: 75%;			
+	input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="file"]{
+		width: 90%;
+		/*border: 1px solid !important;*/
+	}
+	select{
+		width: 50%;
 	}
 	input[type="file"]{
 		display: inline-block;
@@ -22,7 +35,7 @@
 		background-color: inherit;
 	}
 	img{
-		height: 50px;
+		height: 80px;
 		/*position: relative; left: -80%;*/
 		margin-left: -125%;
 	}
@@ -31,10 +44,11 @@
 		background-size: cover;
 	}
 	.formzone{
-		background-color: /*#E8E8E8*/rgba(232, 232, 232, 0.8);
+		background-color: /*#E8E8E8*/rgba(232, 232, 232, 0.9);
 		padding-bottom: 20px;
 		margin-bottom: 50px; 
 		margin-top: 25px;
+		/*margin-left: 30%;*/
 	}
 	.avertir{
 		color: red;
@@ -49,7 +63,7 @@
 		margin: 0px 0px;
 	}
 	.element{
-		margin: 0px 0px;
+		margin: 10px 0px;
 	}
 	#Contientimage{
 		display: none;

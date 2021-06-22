@@ -31,6 +31,7 @@
 			alertnom.style.opacity = '1';
 			return false;
 		}else{
+			nom.style.backgroundColor="rgba(91,192,222,0.3) !important";
 			return true;
 		}
 	}
@@ -68,6 +69,7 @@
 			alertprenom.style.opacity = '1';
 			return false;
 		}else{
+			prenom.style.backgroundColor="rgba(91,192,222,0.3) !important";
 			return true;
 		}
 	}
@@ -82,11 +84,16 @@
 		
 	phone.addEventListener('blur', testphone);
 	function testphone(){
-		if (phone.value%1 != 0) {  // on se rassure que le champ ne contient que des chiffres.
+		if (phone.value%1 != 0 || phone.value.length<8) {  // on se rassure que le champ ne contient que des chiffres.
 			alertphone.innerHTML = "Ce champ doit contenir au moins 8 chiffres sans espace ni caracteres tels que '@', '%'' ou '-'";
 			alertphone.style.opacity = '1';
 			return false;
+		// }else if(phone.value.length<8){
+		// 	alertphone.innerHTML = "Ce champ doit contenir au moins 8 chiffres sans espace ni caracteres tels que '@', '%'' ou '-'";
+		// 	alertphone.style.opacity = '1';
+		// 	return false;
 		}else{
+			phone.style.backgroundColor="rgba(91,192,222,0.3) !important";
 			return true;
 		}
 		
@@ -116,9 +123,10 @@
 			mail_ending=mail.value.split('@');   //si on a notre indicateur on l'utilise pour separer l'adresse entree en 2 blocks
 			
 			for (var i = 0; i < mail_format.length; i++) {  // on parcours le tableau des formats de mail.
-				console.log(mail_format[i]);
-				console.log(mail_format.length);
+				// console.log(mail_format[i]);
+				// console.log(mail_format.length);
 				if(mail_format[i]==mail_ending[1]){		// on verifie si la partie entree en adresse apres le @ vaut bien l'une des valeurs souhaitee
+					mail.style.backgroundColor="rgba(91,192,222,0.3) !important";
 					return true;
 				}
 				else if(i==mail_format.length-1 && mail_format[i]!=mail_ending[1]){   // si jusqu'au dernier element des formats on ne trouve rien alors erreur
@@ -135,23 +143,156 @@
 		}
 	}
 
+	//traitement du sexe *******************************************************************
+	var male = document.getElementById('male'),
+		female = document.getElementById('female'),
+		alertsexe = document.getElementById('alertsexe'),
+		etatsexe = false;
+	male.addEventListener('change', testsexe);
+	female.addEventListener('change', testsexe);
+	function testsexe(){
+			alertsexe.style.opacity='0';
+			etatsexe = true;	
+	}
+	
+	//traitement de la date *******************************************************************
+	var date = document.getElementById('date'),
+		alertdate = document.getElementById('alertnaissance'),
+		etatdate = false;
+	date.addEventListener('change', testdate);
+	function testdate(){
+			alertdate.style.opacity='0';
+			etatdate = true;	
+	}
+	
+	//traitement du pays *******************************************************************
+	var pays = document.getElementById('pays'),
+		alertpays = document.getElementById('alertpays');
+
+	pays.addEventListener('change', testpays);
+	function testpays(){
+		if(pays.value==''){
+			alertpays.style.opacity='1';
+			return false;
+		}else{
+			alertpays.style.opacity='0';
+			pays.style.backgroundColor="rgba(91,192,222,0.3) !important";
+			return true;
+		}	
+	}
+		//traitement de la photo *******************************************************************
+	var photo = document.getElementById('myfile'),
+		alertphoto = document.getElementById('alertfile');
+	photo.addEventListener('focus', function(){	// on se rassure que les erreurs ne s'affichent pas lorsqu'on est dans le champ.
+		alertphoto.style.opacity='0';
+	});
+	function testphoto(){
+		if(photo.value==''){
+			alertphoto.style.opacity='1';
+			return false;
+		}else{
+			alertphoto.style.opacity='0';
+			return true;
+		}	
+	}
+		//traitement du mot de passe *******************************************************************
+	var pwd = document.getElementById('pwd'),
+		alertpwd = document.getElementById('alertpwd');
+	pwd.addEventListener('focus', function(){	// on se rassure que les erreurs ne s'affichent pas lorsqu'on est dans le champ.
+		alertpwd.style.opacity='0';
+	});
+	pwd.addEventListener('blur',testpwd);
+	function testpwd(){
+		if(pwd.value.length<4){
+			alertpwd.style.opacity='1';
+			return false;
+		}else{
+			pwd.style.backgroundColor="rgba(91,192,222,0.3) !important";
+			return true;
+		}	
+	}
+	
+
+
 	//traitement du submit ***************************************************************
+
 	var envoie = document.getElementById('submit'),
 		formulaire = document.getElementById('formulaire'),
-		alert = document.getElementById('alertgeneral');
-		envoie.addEventListener('click', testchamp);
+		alert = document.getElementById('alertgeneral'),
+		pwd = document.getElementById('pwd'),
+		alertpwd = document.getElementById('alertpwd'),
+		date = document.getElementById('date');
+	var ok = [];
+
+	envoie.addEventListener('click', testchamp);
 	function testchamp(){
 		if(!testnom()){
 			alertnom.style.opacity = '1';
 			alert.style.opacity = '1';
-		}else if(!testprenom()){
+		}else{
+			ok[0]=true;
+		}
+
+		if(!testprenom()){
 			alertprenom.style.opacity = '1';
 			alert.style.opacity = '1';
-		}else if(!testmail()){
+		}else {
+			ok[1]=true;
+		}
+
+		if(!etatsexe){
+			alertsexe.style.opacity='1';
+			alert.style.opacity = '1';
+		}else {
+			ok[2]=true;
+		}
+
+		if(!etatdate){
+			alertdate.style.opacity='1';
+			alert.style.opacity = '1';
+		}else {
+			ok[3]=true;
+		}
+
+		if(!testphone()){
+			alertphone.style.opacity='1';
+			alert.style.opacity = '1';
+		}else {
+			ok[4]=true;
+		}
+
+		if(!testpays()){
+			alertpays.style.opacity='1';
+			alert.style.opacity = '1';
+		}else {
+			ok[5]=true;
+		}
+
+		if(!testmail()){
 			alertmail.style.opacity = '1';
 			alert.style.opacity = '1';
+		}else {
+			ok[6]=true;
 		}
-		// else{
-		// 	formulaire.submit();
-		// }
+
+		if(!testphoto()){
+			alertphoto.style.opacity='1';
+			alert.style.opacity = '1';
+		}else {
+			ok[7]=true;
+		}
+
+		if(!testpwd()){
+			alertpwd.style.opacity='1';
+			alert.style.opacity = '1';
+		}else {
+			ok[8]=true;
+		}
+	for (var i = 0; i<ok.length; i++) {
+	
+		if(ok[i]==true){
+			send=true;
+		}
+	}
+	if (send) {formulaire.submit();}
 	}
